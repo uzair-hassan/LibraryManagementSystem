@@ -1,0 +1,97 @@
+﻿@model IEnumerable<DatabaseLayer.BooksTable>
+
+@{
+    ViewBag.Title = "All Books";
+}
+
+<p>
+    @Html.ActionLink("Register New Book", "Create", null, new { @class = "btn btn-success" })
+</p> 
+<table class="table table-hover">
+    <tr>
+        <th>
+            Book Title
+        </th>
+        <th>
+            SHort Description
+        </th>
+        @*<th>
+            Author
+        </th>*@
+        <th>
+            Book
+        </th>
+        <th>
+            Book Edition
+        </th>
+        @*<th>
+            Total Copies
+        </th>
+        <th>
+            Register Date
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Book Description
+        </th>*@
+        <th>
+            Book Type
+        </th>
+        <th>
+            Department
+        </th>
+        <th>
+            User
+        </th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortDescription)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.BookName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edition)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.TotalCopies)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.BookTypeTable.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentsTable.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserTable.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BookID }, new { @class = "btn btn-success" }) 
+            @Html.ActionLink("Details", "Details", new { id=item.BookID },new {@class = "btn btn-default"}) 
+            
+        </td>
+    </tr>
+}
+
+</table>
